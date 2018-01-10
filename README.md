@@ -8,9 +8,18 @@ Often views depend on some dynamic data that needs to be fetched from a remote l
 - `done`: an action that extends the cache once data has been fetched
 - `view`: a function that gets passed the fetched data and returns a vdom node
 
+## Install
+
+```
+npm i hyperapp-fetch
+```
+
 ## Usage
 
 ```js
+import { app } from 'hyperapp'
+import { Fetch } from 'hyperapp-fetch'
+
 const state = {
   users: {},
 }
@@ -22,14 +31,12 @@ const actions = {
 }
 
 const view = (state, actions) =>
-  main([
-    Fetch({
-      cache: state.users,
-      url: 'https://api.github.com/users/lukejacksonn',
-      done: actions.addUser,
-      view: (cache, key) => Object.keys(cache),
-    }),
-  ])
+  Fetch({
+    cache: state.users,
+    url: 'https://api.github.com/users/lukejacksonn',
+    done: actions.addUser,
+    view: (cache, key) => Object.keys(cache),
+  })
 
 app(state, actions, view, document.body)
 ```
