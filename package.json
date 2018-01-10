@@ -1,6 +1,6 @@
 {
   "name": "hyperapp-fetch",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A component for fetching and caching data before rendering a view",
   "main": "index.js",
   "scripts": {
